@@ -1,0 +1,65 @@
+:root {
+  /* ---- Color tokens ---- */
+  --void: #0a0a0c;          /* base black */
+  --panel: #15141a;         /* glass / card base */
+  --panel-line: rgba(244, 239, 230, 0.1);
+  --ink: #f4efe6;           /* warm white text */
+  --ink-dim: #b6b0a6;       /* secondary text */
+  --ink-faint: #6f6a63;     /* tertiary / captions */
+  --ember: #ff7a3d;         /* warm orange accent */
+  --ember-soft: #ffb37a;    /* amber highlight */
+  --blue-glow: #4c7cff;     /* monitor blue glow */
+
+  /* ---- Type tokens ---- */
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--void);
+}
+
+body {
+  background: var(--void);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+::selection {
+  background: var(--ember);
+  color: var(--void);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

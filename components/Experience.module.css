@@ -1,0 +1,105 @@
+.section {
+  position: relative;
+  background: var(--void);
+  padding: clamp(64px, 10vw, 120px) clamp(20px, 5vw, 72px);
+  border-top: 1px solid var(--panel-line);
+}
+
+.header {
+  max-width: 720px;
+  margin: 0 0 clamp(40px, 6vw, 56px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ember-soft);
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(30px, 4vw, 46px);
+  color: var(--ink);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--panel-line);
+}
+
+.job {
+  display: grid;
+  grid-template-columns: clamp(180px, 22vw, 260px) 1fr;
+  gap: clamp(24px, 4vw, 64px);
+  padding: clamp(28px, 3.5vw, 44px) 0;
+  border-bottom: 1px solid var(--panel-line);
+}
+
+.jobMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 2px;
+}
+
+.company {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(17px, 1.6vw, 21px);
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.role {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--ember-soft);
+  text-transform: uppercase;
+}
+
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bullet {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-dim);
+  padding-left: 16px;
+  position: relative;
+}
+
+.bullet::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 1px;
+  background: var(--ember);
+}
+
+@media (max-width: 680px) {
+  .job {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

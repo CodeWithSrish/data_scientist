@@ -1,0 +1,101 @@
+.section {
+  position: relative;
+  background: var(--void);
+  padding: clamp(64px, 10vw, 120px) clamp(20px, 5vw, 72px);
+  border-top: 1px solid var(--panel-line);
+}
+
+.header {
+  max-width: 720px;
+  margin: 0 0 clamp(40px, 6vw, 56px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.eyebrow {
+  /* Match the larger size we configured for your About section */
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ember-soft);
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(30px, 4vw, 46px);
+  color: var(--ink);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--panel-line);
+}
+
+.row {
+  display: flex;
+  gap: clamp(24px, 4vw, 64px);
+  align-items: baseline;
+  padding: clamp(20px, 2.5vw, 28px) 0;
+  border-bottom: 1px solid var(--panel-line);
+  transition: padding-left 0.3s ease;
+}
+
+/* Premium Row Interactive State */
+.row:hover {
+  /* Subtle indent behavior to create horizontal responsiveness on interaction */
+  padding-left: 8px; 
+}
+
+.year {
+  font-family: var(--font-mono);
+  /* Bumped size up slightly from 11px to 13px for improved technical visibility */
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  
+  /* FIXED: Swapped var(--ink-faint) out for your clear primary var(--ink) token */
+  color: var(--ink);
+  /* Added a medium weight so the numeric glyphs hold sharp contrast values */
+  font-weight: 500;
+  opacity: 0.85;
+  
+  flex-shrink: 0;
+  width: 48px; /* Widened slightly to account for the larger font sizing */
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+/* Enhances the numbers dynamically whenever the container gets hovered */
+.row:hover .year {
+  color: var(--ember-soft);
+  opacity: 1;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.degree {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.2vw, 16px);
+  font-weight: 500;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.institution {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 13.5px;
+  /* FIXED: Changed to var(--ink-dim) to make the school names clearly legible too */
+  color: var(--ink-dim);
+  margin: 0;
+}

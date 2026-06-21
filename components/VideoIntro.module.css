@@ -1,0 +1,198 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  background: var(--void);
+  isolation: isolate;
+}
+
+.bgLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.bgVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* FIXED: Offsets video container slightly right to leave empty screen room for text */
+  object-position: 74% center; 
+  transform: scale(1.01);
+  /* FIXED: Boosted brightness from 0.55 up to 0.95 for maximum crystal clear visibility */
+  filter: brightness(0.95) saturate(1.02);
+  opacity: 1;
+}
+
+.gradientOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  /* FIXED: Lightened background color masks to let all native rendering light shine through */
+  background:
+    radial-gradient(60% 60% at 75% 50%, rgba(255, 122, 61, 0.04), transparent 80%),
+    linear-gradient(180deg, rgba(10, 10, 12, 0.2) 0%, transparent 25%, transparent 75%, rgba(10, 10, 12, 0.8) 100%),
+    linear-gradient(90deg, rgba(10, 10, 12, 0.6) 0%, rgba(10, 10, 12, 0.2) 35%, transparent 100%);
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  /* Softens edge vignette shading for enhanced scene pop */
+  box-shadow: inset 0 0 8vw rgba(0, 0, 0, 0.5);
+}
+
+.stage {
+  position: relative;
+  z-index: 5;
+  height: 100%;
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 72px) 0 24px; 
+  display: flex;
+  align-items: flex-end; 
+  justify-content: flex-start;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  position: absolute;
+  left: 0; 
+  bottom: clamp(40px, 5vh, 75px); 
+}
+
+
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 0.92;
+  font-size: clamp(56px, 9.2vw, 132px);
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  /* Adds a fine shadow backdrop drop so title edges stay perfectly legible against light background updates */
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.nameLine {
+  display: block;
+  overflow: visible;
+}
+
+.name em {
+  font-style: italic;
+  font-weight: 400;
+  background: linear-gradient(120deg, var(--ember-soft) 0%, var(--ember) 55%, #ffd9b0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.controls {
+  position: absolute;
+  right: clamp(20px, 5vw, 72px); 
+  bottom: clamp(24px, 5vh, 48px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
+}
+
+.glassBtn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  background: rgba(10, 10, 12, 0.3);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.glassBtn:hover {
+  background: rgba(255, 122, 61, 0.2);
+  border-color: rgba(255, 178, 122, 0.35);
+  transform: translateY(-2px);
+}
+
+.scrollIndicator {
+  position: absolute;
+  z-index: 6;
+  bottom: clamp(20px, 4vh, 36px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink-dim);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.scrollLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.scrollLine {
+  position: relative;
+  width: 1px;
+  height: 46px;
+  background: rgba(244, 239, 230, 0.25);
+  overflow: hidden;
+}
+
+.scrollPulse {
+  position: absolute;
+  left: 0;
+  top: -40%;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(180deg, transparent, var(--ember-soft), transparent);
+  animation: scrollDrop 2.1s ease-in-out infinite;
+}
+
+@keyframes scrollDrop {
+  0% { top: -40%; }
+  100% { top: 100%; }
+}
+
+@media (max-width: 880px) {
+  .stage {
+    align-items: flex-end;
+    padding-bottom: 16svh;
+  }
+
+  .bgVideo {
+    object-position: 64% center; 
+  }
+
+  .gradientOverlay {
+    background: linear-gradient(180deg, rgba(10,10,12,0.1) 0%, rgba(10,10,12,0.5) 50%, rgba(10,10,12,0.92) 100%);
+  }
+
+  .controls {
+    left: clamp(20px, 5vw, 72px);
+    right: auto;
+    bottom: clamp(16px, 3vh, 32px);
+  }
+}

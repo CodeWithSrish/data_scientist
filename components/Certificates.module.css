@@ -1,0 +1,150 @@
+.section {
+  position: relative;
+  background: var(--void);
+  padding: 0 clamp(20px, 5vw, 72px) clamp(80px, 10vw, 140px);
+}
+
+.header {
+  max-width: 720px;
+  margin: 0 0 clamp(40px, 6vw, 64px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ember-soft);
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(30px, 4vw, 46px);
+  color: var(--ink);
+  line-height: 1.1;
+}
+
+.intro {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--ink-dim);
+  font-size: clamp(14.5px, 1.2vw, 16.5px);
+  line-height: 1.65;
+  max-width: 58ch;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--panel-line);
+  border: 1px solid var(--panel-line);
+}
+
+.card {
+  background: var(--void);
+  display: flex;
+  flex-direction: column;
+  transition: background 0.35s ease;
+}
+
+.card:hover {
+  background: #110f12;
+}
+
+.card:hover .cardLink {
+  color: var(--ember-soft);
+  border-color: rgba(255, 178, 122, 0.4);
+  transform: translate(1px, -1px);
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.thumbCta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  transition: color 0.25s ease;
+}
+
+.card:hover .thumbCta {
+  color: var(--ember-soft);
+}
+
+.polaroid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.meta {
+  padding: clamp(18px, 2vw, 22px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.metaText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 17px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.cardIssuer {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+}
+
+.cardLink {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-dim);
+  border: 1px solid var(--panel-line);
+  transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+  

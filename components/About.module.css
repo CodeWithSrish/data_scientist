@@ -1,0 +1,154 @@
+.section {
+  position: relative;
+  background: var(--void);
+  padding: clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px);
+  border-top: 1px solid var(--panel-line);
+  overflow: hidden;
+}
+
+/* Outer layout wrapper to constrain maximum content bounds on huge monitors */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  /* Reduced gap to pull layout elements closer together, instantly removing the empty void */
+  gap: clamp(48px, 6vw, 80px);
+  align-items: center; /* Centers items vertically for a balanced baseline */
+  justify-content: space-between;
+}
+
+.left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 21px;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: var(--ember-soft); /* Uses your soft accent color token */
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(32px, 4.5vw, 52px);
+  color: var(--ink);
+  line-height: 1.1;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.heading em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ink-dim);
+  opacity: 0.8;
+}
+
+.bio {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--ink-dim);
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.75;
+  max-width: 54ch; /* Optimized line length for better readability */
+}
+
+.right {
+  flex-shrink: 0;
+}
+
+/* Image Frame Wrapper Layer */
+.imageWrapper {
+  position: relative;
+  /* Pulls a design accent backdrop block behind your image */
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+  padding: 12px;
+  border-radius: 20px; /* Modern curved container look */
+  border: 1px solid var(--panel-line);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
+  transition: border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portrait {
+  /* Increased scale fluid ranges so the portrait feels substantial */
+  width: clamp(260px, 24vw, 360px);
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  border-radius: 12px; /* Smooth inside corner rounding radius */
+  filter: grayscale(15%) contrast(1.02); /* Clean editorial filtering */
+  
+  /* Modern scroll reveal tracking */
+  animation: slideInFromRight linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 35%;
+  
+  transition: filter 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Coordinated Interactive States */
+.imageWrapper:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.imageWrapper:hover .portrait {
+  filter: grayscale(0%) contrast(1.05);
+  transform: scale(1.02); /* Clean, micro-scale effect */
+}
+
+/* Entrance Animation Keyframes */
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Clean, Stacked Mobile Layout Overrides */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column-reverse;
+    gap: 40px;
+    align-items: stretch;
+  }
+  
+  .imageWrapper {
+    padding: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .portrait {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-position: center 25%;
+    border-radius: 16px;
+    animation-range: entry 0% entry 20%;
+  }
+
+  @keyframes slideInFromRight {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
